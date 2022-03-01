@@ -13,6 +13,9 @@ public enum ConsoleCommands {
     START_GAME("^start new game (?<a>\\d+) (?<b>\\d+) (?<c>\\d+) (?<moves>\\d+)"),
     LOGOUT("^logout$"),
 
+    //Scoreboard:
+    SHOW_SCOREBOARD("show scoreboard"),
+
     BACK("back"),
     SHOW_CURRENT_MENU("^show current menu$"),
     MENU_EXIT("^menu exit$"),

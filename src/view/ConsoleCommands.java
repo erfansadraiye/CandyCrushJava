@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public enum ConsoleCommands {
     //RegisterMenu:
-    REGISTER("^register (?<username>\\w+) (?<password>\\w+) (?<nickname>\\w+)$"),
-    LOGIN("^login (?<username>\\w+) (?<password>\\w+)$"),
+    REGISTER("^register (?<username>\\w+) (?<password>\\S+) (?<nickname>\\w+)$"),
+    LOGIN("^login (?<username>\\w+) (?<password>\\S+)$"),
 
     //MainManu:
     MENU_ENTER("^enter (?<menu>\\w+) menu$"),
@@ -16,6 +16,9 @@ public enum ConsoleCommands {
     //Scoreboard:
     SHOW_SCOREBOARD("show scoreboard"),
 
+    //Profile menu:
+    CHANGE_PASSWORD("change password (?<old_password>\\w+) (?<new_password>\\w+)"),
+    SHOW_INFO("show information"),
     BACK("back"),
     SHOW_CURRENT_MENU("^show current menu$"),
     MENU_EXIT("^menu exit$"),

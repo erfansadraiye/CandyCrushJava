@@ -1,5 +1,7 @@
 package view.menu;
 
+import controller.RegisterController;
+import model.User;
 import view.ConsoleCommands;
 import view.HandleRequestType;
 import view.Menu;
@@ -15,8 +17,33 @@ public class ProfileView extends ViewMenu {
             help();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BACK, input)) != null) {
             back();
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.CHANGE_PASSWORD, input)) != null) {
+            changePassword(matcher);
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_INFO, input)) != null) {
+            showInfo();
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BACK, input)) != null) {
+            back();
         } else {
             System.out.println("invalid command");
+        }
+    }
+
+    private void showInfo() {
+        User onlineUser = RegisterController.getInstance().getOnlineUser();
+        System.out.println("username : " + onlineUser.getUsername());
+        System.out.println("level : " + onlineUser.getLevel());
+        System.out.println("money : " + onlineUser.getWallet());
+        System.out.println("highscore : " + onlineUser.getHighScore());
+    }
+
+    private void changePassword(Matcher matcher) {
+        String oldPassword = matcher.group("old_password");
+        String newPassword = matcher.group("new_password");
+        try {
+            RegisterController.getInstance().changePassword(oldPassword,newPassword);
+            System.out.println("password changed!");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

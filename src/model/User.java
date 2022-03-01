@@ -1,14 +1,10 @@
 package model;
 
-import controller.RegisterController;
-
-import java.util.ArrayList;
-
 public class User {
 
-    private final String username;
-    private final String password;
-    private final String nickname;
+    private String username;
+    private String password;
+    private String nickname;
 
     private long highScore;
     private long wallet;
@@ -19,7 +15,6 @@ public class User {
         this.password = password;
         this.nickname = nickname;
     }
-
 
 
     public int getLevel() {
@@ -58,4 +53,7 @@ public class User {
         return username;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

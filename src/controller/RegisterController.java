@@ -35,6 +35,8 @@ public class RegisterController {
     public void createUser(String username, String password, String nickname) throws Exception {
         if (userPass.containsKey(username))
             throw new Exception("username exists!");
+        if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+-=|]).{8,32}$"))
+            throw new Exception("password is weak!");
         User newUser = new User(username, password, nickname);
         userPass.put(username, password);
         allUsers.add(newUser);
@@ -64,12 +66,12 @@ public class RegisterController {
         HandleRequestType.currentMenu = Menu.REGISTER_MENU;
     }
 
-    public void enterMenu(Menu menu) throws Exception {
-        if (menu == null)
-            throw new Exception("invalid command!");
-        if (menu == Menu.MAIN_MENU || menu == Menu.REGISTER_MENU)
-            throw new Exception("menu navigation is not possible");
-        HandleRequestType.currentMenu = menu;
+    public void changePassword(String oldPassword,String newPassword) throws Exception {
+        if (!oldPassword.equals(onlineUser.getPassword()))
+            throw new Exception("password is incorrect!");
+        if (!newPassword.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+-=|]).{8,32}$"))
+            throw new Exception("password is weak!");
+        onlineUser.setPassword(newPassword);
     }
 
     public User getOnlineUser() {

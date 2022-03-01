@@ -1,6 +1,8 @@
 package view.menu;
 
 import view.ConsoleCommands;
+import view.HandleRequestType;
+import view.Menu;
 
 import java.util.regex.Matcher;
 
@@ -11,9 +13,15 @@ public class ScoreBoardView extends ViewMenu {
             showCurrentMenu();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.HELP, input)) != null) {
             help();
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BACK, input)) != null) {
+            back();
         } else {
             System.out.println("invalid command");
         }
+    }
+
+    private void back() {
+        HandleRequestType.currentMenu = Menu.MAIN_MENU;
     }
 
     @Override

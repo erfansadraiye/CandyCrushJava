@@ -42,6 +42,11 @@ public class MainView extends ViewMenu {
 
     private void startGame(Matcher matcher) {
         System.out.println("start");
+        int a = Integer.parseInt(matcher.group("a"));
+        int b = Integer.parseInt(matcher.group("b"));
+        int c = Integer.parseInt(matcher.group("c"));
+        int moves = Integer.parseInt(matcher.group("moves"));
+        System.out.println(a + " " + b + " "+c+ " "+ moves);
         //TODO
     }
 

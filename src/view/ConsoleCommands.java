@@ -9,11 +9,11 @@ public enum ConsoleCommands {
     LOGIN("^login (?<username>\\w+) (?<password>\\w+)$"),
 
     //MainManu:
-    MENU_ENTER("^enter menu (?<menu>\\w+)$"),
+    MENU_ENTER("^enter (?<menu>\\w+) menu$"),
     START_GAME("^start new game (?<a>\\d+) (?<b>\\d+) (?<c>\\d+) (?<moves>\\d+)"),
     LOGOUT("^logout$"),
 
-
+    BACK("back"),
     SHOW_CURRENT_MENU("^show current menu$"),
     MENU_EXIT("^menu exit$"),
     HELP("^help$");

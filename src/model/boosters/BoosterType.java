@@ -1,16 +1,18 @@
 package model.boosters;
 
 public enum BoosterType {
-    FREE_SWITCH(13),
-    COLOUR_BOMB_BRUSH(20),
-    STRIPED_BRUSH(15),
-    LOLLIPOP_HAMMER(6),
-    WRAPPED_BRUSH(15),
-    EXTRA_MOVES(10);
+    FREE_SWITCH("free_switch", 13),
+    COLOUR_BOMB_BRUSH("colour_bomb_brush", 20),
+    STRIPED_BRUSH("striped_brush", 15),
+    LOLLIPOP_HAMMER("lollipop_hammer", 6),
+    WRAPPED_BRUSH("wrapped_brush", 15),
+    EXTRA_MOVES("extra_moves", 10);
 
     private int price;
+    private String name;
 
-    BoosterType(int price) {
+    BoosterType(String name, int price) {
+        this.name = name;
         this.price = price;
     }
 
@@ -36,5 +38,9 @@ public enum BoosterType {
 
     public int getPrice() {
         return price;
+    }
+
+    public String getName(){
+        return name;
     }
 }

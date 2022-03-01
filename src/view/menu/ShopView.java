@@ -35,7 +35,7 @@ public class ShopView extends ViewMenu {
         BoosterType boosterType = BoosterType.getBoosterByName(matcher.group("booster"));
         try {
             ShopController.getInstance().buyBooster(boosterType,count);
-            System.out.println("Lollipop Hammer Sold.");
+            System.out.println(boosterType.getName()+" Sold.");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

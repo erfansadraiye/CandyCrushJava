@@ -14,14 +14,26 @@ public class CombinationFinder {
             return new StripedWrappedCombination(first, second);
         if (a instanceof WrappedCandy && b instanceof StripedCandy)
             return new StripedWrappedCombination(first, second);
+
         if (a instanceof WrappedCandy && b instanceof WrappedCandy)
             return new WrappedWrappedCombination(first, second);
+
         if (a instanceof WrappedCandy && b instanceof ColourBomb)
             return new WrappedColourBombCombination(first, second);
         if (a instanceof ColourBomb && b instanceof WrappedCandy)
             return new WrappedColourBombCombination(first, second);
+
         if (a instanceof ColourBomb && b instanceof ColourBomb)
             return new ColourBombColourBombCombination(first, second);
+
+        if (a instanceof StripedCandy && b instanceof ColourBomb)
+            return new StripedColourBombCombination(first, second);
+        if (a instanceof ColourBomb && b instanceof StripedCandy)
+            return new StripedColourBombCombination(first, second);
+
+        if (a instanceof StripedCandy && b instanceof StripedCandy)
+            return new StripedStripedCombination(first, second);
+
         return new NormalCombination();
     }
 }

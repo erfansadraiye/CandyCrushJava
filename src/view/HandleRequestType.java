@@ -8,7 +8,7 @@ public class HandleRequestType {
     public static Menu currentMenu = Menu.REGISTER_MENU;
     ShopView shopView;
     GameView gameView;
-    MainMenu mainMenu;
+    MainView mainView;
     ScoreBoardView scoreBoardView;
     ProfileView profileView;
     RegisterView registerView;
@@ -30,8 +30,8 @@ public class HandleRequestType {
         return scoreBoardView;
     }
 
-    public MainMenu getMainMenu() {
-        return mainMenu;
+    public MainView getMainView() {
+        return mainView;
     }
 
 
@@ -41,16 +41,17 @@ public class HandleRequestType {
         scoreBoardView = new ScoreBoardView();
         shopView = new ShopView();
         gameView = new GameView();
-        mainMenu = new MainMenu();
+        mainView = new MainView();
         while (currentMenu != Menu.EXIT) {
             if (scanner.hasNext()) {
                 command = scanner.nextLine();
             } else
                 break;
+            command = command.trim();
             if (currentMenu == Menu.REGISTER_MENU) {
                 registerView.run(command);
             } else if (currentMenu == Menu.MAIN_MENU) {
-                mainMenu.run(command);
+                mainView.run(command);
             } else if (currentMenu == Menu.PROFILE_VIEW) {
                 profileView.run(command);
             } else if (currentMenu == Menu.GAME_MENU) {

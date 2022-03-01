@@ -1,7 +1,7 @@
 package controller;
 
 public class GameController {
-    protected static GameController instance = null;
+    private static GameController instance = null;
     private GameController(){
 
     }

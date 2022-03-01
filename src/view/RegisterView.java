@@ -4,14 +4,20 @@ import controller.RegisterController;
 
 import java.util.regex.Matcher;
 
-class RegisterView {
+public class RegisterView extends ViewMenu {
+
+    public void help() {
+        System.out.println("help");//TODO fill
+    }
 
     public void run(String input) {
         Matcher matcher;
         if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.LOGIN, input)) != null) {
             loginUser(matcher);
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.CREATE_USER, input)) != null) {
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.REGISTER, input)) != null) {
             createNewUser(matcher);
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_CURRENT_MENU, input)) != null) {
+            showCurrentMenu();
         } else {
             System.out.println("invalid command");
         }
@@ -26,7 +32,7 @@ class RegisterView {
             RegisterController.getInstance().createUser(username, password, nickname);
             System.out.println("user created successfully!");
         } catch (Exception exception) {
-            System.err.println(exception.getMessage());
+            System.out.println(exception.getMessage());
         }
     }
 
@@ -37,28 +43,8 @@ class RegisterView {
             RegisterController.getInstance().loginUser(username, password);
             System.out.println("user logged in successfully!");
         } catch (Exception exception) {
-            System.err.println(exception.getMessage());
+            System.out.println(exception.getMessage());
         }
     }
 
-    private void enterMenu(Matcher matcher) {
-        String menu = matcher.group("menu");
-        if (Menu.getMenu(menu) == null) {
-            System.err.println("invalid command");
-            return;
-        }
-        if (Menu.getMenu(menu) != Menu.MAIN_MENU) {
-            System.err.println("menu navigation is not possible");
-            return;
-        }
-        HandleRequestType.currentMenu = Menu.getMenu(menu);
-    }
-
-    private void exitMenu() {
-        HandleRequestType.currentMenu = Menu.EXIT;
-    }
-
-    private void showCurrentMenu() {
-        System.out.println("Login");
-    }
 }

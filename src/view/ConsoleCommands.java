@@ -5,12 +5,18 @@ import java.util.regex.Pattern;
 
 public enum ConsoleCommands {
     //RegisterMenu:
-    LOGIN("^user login (?:username|u) (?<username>\\w+) (?:password|p) (?<password>\\w+)$"),
-    LOGOUT("user logout"),
-    MENU_ENTER("menu enter (?<menu>\\w+)"),
-    MENU_EXIT("menu exit"),
-    CREATE_USER("^user create (?:username|u) (?<username>\\w+) (?:nickname|n) (?<nickname>\\w+) (?:password|p) (?<password>\\w+)$");
+    REGISTER("^register (?<username>\\w+) (?<password>\\w+) (?<nickname>\\w+)$"),
+    LOGIN("^login (?<username>\\w+) (?<password>\\w+)$"),
 
+    //MainManu:
+    MENU_ENTER("^enter menu (?<menu>\\w+)$"),
+    START_GAME("^start new game (?<a>\\d+) (?<b>\\d+) (?<c>\\d+) (?<moves>\\d+)"),
+    LOGOUT("^logout$"),
+
+
+    SHOW_CURRENT_MENU("^show current menu$"),
+    MENU_EXIT("^menu exit$"),
+    HELP("^help$");
     public String label;
 
     ConsoleCommands(String string) {

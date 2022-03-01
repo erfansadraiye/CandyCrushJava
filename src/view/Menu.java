@@ -11,7 +11,7 @@ public enum Menu {
 
     public static Menu getMenu(String menu) {
         switch (menu) {
-            case "Login":
+            case "Register":
                 return REGISTER_MENU;
             case "Main":
                 return MAIN_MENU;
@@ -27,5 +27,25 @@ public enum Menu {
                 return null;
         }
 
+    }
+
+    @Override
+    public String toString() {
+        switch (HandleRequestType.currentMenu) {
+            case REGISTER_MENU:
+                return "Register Menu";
+            case MAIN_MENU:
+                return "Main Menu";
+            case GAME_MENU:
+                return "Game Menu";
+            case SCOREBOARD:
+                return "Scoreboard";
+            case PROFILE_VIEW:
+                return "Profile Menu";
+            case SHOP:
+                return "Shop Menu";
+            default:
+                return null;
+        }
     }
 }

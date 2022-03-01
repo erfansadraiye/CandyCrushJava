@@ -31,7 +31,6 @@ public class ProfileView extends ViewMenu {
     private void showInfo() {
         User onlineUser = RegisterController.getInstance().getOnlineUser();
         System.out.println("username : " + onlineUser.getUsername());
-        System.out.println("level : " + onlineUser.getLevel());
         System.out.println("money : " + onlineUser.getWallet());
         System.out.println("highscore : " + onlineUser.getHighScore());
     }

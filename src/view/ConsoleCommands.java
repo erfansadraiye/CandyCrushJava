@@ -14,7 +14,7 @@ public enum ConsoleCommands {
     LOGOUT("^logout$"),
 
     //Scoreboard:
-    SHOW_SCOREBOARD("show scoreboard"),
+    SHOW_SCOREBOARD("^show scoreboard$"),
     //GameMenu:
     SWIPE("^swipe (?<x>\\d+) (?<y>\\d+) (?<direction>[RLDU])$"),
     ACTIVE_LOLLIPOP_HAMMER("^active lollipop hammer (?<x>\\d+) (?<y>\\d+)$"),
@@ -26,9 +26,17 @@ public enum ConsoleCommands {
     SHOW_BOOSTERS("^show boosters$"),
 
     //Profile menu:
-    CHANGE_PASSWORD("change password (?<old_password>\\w+) (?<new_password>\\w+)"),
-    SHOW_INFO("show information"),
-    BACK("back"),
+    CHANGE_PASSWORD("^change password (?<old_password>\\w+) (?<new_password>\\w+)$"),
+    SHOW_INFO("^show information$"),
+    //Shop menu
+    SHOW_MONEY("^show money$"),
+    SHOW_INVENTORY("^show inventory$"),
+    BUY_LOLLIPOP_HAMMER("^buy lollipop hammer (?<count>\\d+)$"),
+    BUY_EXTRA_MOVES("^buy extra moves (?<count>\\d+)$"),
+    BUY_COLOUR_BOMB("^buy colour bomb (?<count>\\d+)$"),
+    BUY_FREE_SWITCH("^buy free switch (?<count>\\d+)$"),
+    BUY_STRIPED_BRUSH("^buy striped brush (?<count>\\d+)$"),
+    BACK("^back$"),
     SHOW_CURRENT_MENU("^show current menu$"),
     MENU_EXIT("^menu exit$"),
     HELP("^help$");

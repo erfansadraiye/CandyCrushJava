@@ -13,7 +13,7 @@ public class StripedWrappedCombination implements Combination {
 
     public CellCondition getCellCondition(Game game) {
         return (Cell cell) -> {
-            return cell.getCoordinate().getMinDistance(first.getCoordinate()) <= 3;
+            return cell.getCoordinate().getMinDistance(first.getCoordinate()) < 3;
         };
     }
 }

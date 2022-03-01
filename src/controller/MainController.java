@@ -28,11 +28,4 @@ public class MainController {
 
         HandleRequestType.currentMenu = menu;
     }
-
-    public void startGame(Matcher matcher) {
-        System.out.println("start");
-        //TODO
-    }
-
-
 }

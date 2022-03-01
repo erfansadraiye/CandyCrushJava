@@ -1,7 +1,9 @@
 package view.menu;
 
+import controller.GameController;
 import controller.MainController;
 import controller.RegisterController;
+import model.Game;
 import view.ConsoleCommands;
 import view.Menu;
 
@@ -41,13 +43,15 @@ public class MainView extends ViewMenu {
     }
 
     private void startGame(Matcher matcher) {
-        System.out.println("start");
         int a = Integer.parseInt(matcher.group("a"));
         int b = Integer.parseInt(matcher.group("b"));
         int c = Integer.parseInt(matcher.group("c"));
         int moves = Integer.parseInt(matcher.group("moves"));
-        System.out.println(a + " " + b + " "+c+ " "+ moves);
-        //TODO
+        try {
+            GameController.getInstance().startNewGame(a, b, c, moves);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void logout() {

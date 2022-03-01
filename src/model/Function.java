@@ -1,23 +1,24 @@
 package model;
 
+import java.util.Random;
+
 public class Function {
-    private final int a;
-    private final int b;
-    private final int c;
+    private final Random randomobj;
 
     private int x = 0, y = 0;
+    private int cnt = 0;
 
-    public Function(int a, int b, int c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+    public Function(int seed) {
+        randomobj = new Random();
+        randomobj.setSeed(seed);
     }
 
     public int nextInt() {
-        int z = (a * x * x + b * y + c) % 6;
-        x = y;
-        y = z;
-        return z;
+        cnt++;
+        if (cnt % 2 == 0)
+            return randomobj.nextInt(3) - 1;
+        else
+            return randomobj.nextInt(3) + 2;
     }
 
 }

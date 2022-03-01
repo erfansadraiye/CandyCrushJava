@@ -1,5 +1,7 @@
 package model;
 
+import model.combinations.CellCondition;
+
 public class Cell {
     private Coordinate coordinate;
     private Candy candy;
@@ -23,6 +25,12 @@ public class Cell {
 
     public Candy getCandy() {
         return candy;
+    }
+
+    public CellCondition getExplodeCondition() {
+        return (Cell cell) -> {
+            return this.candy.getExplodeCondition(getCoordinate()).canExplodes(cell);
+        };
     }
 
     public void setCandy(Candy candy) {

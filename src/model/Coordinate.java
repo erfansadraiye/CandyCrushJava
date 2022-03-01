@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Coordinate {
     private final int x;
     private final int y;
@@ -22,15 +24,15 @@ public class Coordinate {
 
     }
 
-    public Coordinate getAdjacent(char direction) {
+    public Coordinate getAdjacent(String direction) {
         switch (direction) {
-            case 'R':
+            case "R":
                 return new Coordinate(x, y + 1);
-            case 'D':
+            case "D":
                 return new Coordinate(x + 1, y);
-            case 'L':
+            case "L":
                 return new Coordinate(x, y - 1);
-            case 'U':
+            case "U":
                 return new Coordinate(x - 1, y);
             default:
                 return this;

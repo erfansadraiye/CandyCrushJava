@@ -5,6 +5,13 @@ public class ColourBomb extends SpecialCandy {
         super(Color.NoColor);
     }
 
+    // TODO: override getExplodeCondition
+
+    @Override
+    public Object clone() {
+        return new ColourBomb();
+    }
+
     @Override
     public String toString() {
         return "CB";

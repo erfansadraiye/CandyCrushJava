@@ -14,7 +14,7 @@ public class WrappedWrappedCombination implements Combination {
     public CellCondition getCellCondition(Game game) {
         return (Cell cell) -> {
             return Math.min(cell.getCoordinate().getMaxDistance(first.getCoordinate()),
-                            cell.getCoordinate().getMaxDistance(second.getCoordinate())) <= 3;
+                            cell.getCoordinate().getMaxDistance(second.getCoordinate())) < 3;
         };
     }
 }

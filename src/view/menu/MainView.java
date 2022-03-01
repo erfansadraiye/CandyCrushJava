@@ -43,12 +43,10 @@ public class MainView extends ViewMenu {
     }
 
     private void startGame(Matcher matcher) {
-        int a = Integer.parseInt(matcher.group("a"));
-        int b = Integer.parseInt(matcher.group("b"));
-        int c = Integer.parseInt(matcher.group("c"));
+        int seed = Integer.parseInt(matcher.group("seed"));
         int moves = Integer.parseInt(matcher.group("moves"));
         try {
-            GameController.getInstance().startNewGame(a, b, c, moves);
+            GameController.getInstance().startNewGame(seed, moves);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

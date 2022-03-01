@@ -10,7 +10,7 @@ public enum ConsoleCommands {
 
     //MainManu:
     MENU_ENTER("^enter (?<menu>\\w+) menu$"),
-    START_GAME("^start new game (?<a>\\d+) (?<b>\\d+) (?<c>\\d+) (?<moves>\\d+)"),
+    START_GAME("^start new game (?<seed>\\d+) (?<moves>\\d+)"),
     LOGOUT("^logout$"),
 
     //Scoreboard:

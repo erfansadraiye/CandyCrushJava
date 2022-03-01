@@ -18,6 +18,6 @@ public class CombinationFinder {
             return new WrappedColourBombCombination(first, second);
         if (a instanceof ColourBomb && b instanceof ColourBomb)
             return new ColourBombColourBombCombination(first, second);
-        return new NormalCombination(first, second);
+        return new NormalCombination();
     }
 }

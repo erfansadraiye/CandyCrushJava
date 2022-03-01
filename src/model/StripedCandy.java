@@ -1,5 +1,7 @@
 package model;
 
+import model.combinations.CellCondition;
+
 public class StripedCandy extends SpecialCandy {
 
     private final Direction direction;
@@ -11,6 +13,21 @@ public class StripedCandy extends SpecialCandy {
 
     public Direction getDirection() {
         return this.direction;
+    }
+
+    @Override
+    public CellCondition getExplodeCondition(Coordinate coordinate) {
+        return (Cell cell) -> {
+            if (direction.equals(Direction.VERTICAL))
+                return cell.getYCoordinate() == coordinate.getY();
+            else
+                return cell.getXCoordinate() == coordinate.getX();
+        };
+    }
+
+    @Override
+    public Object clone() {
+        return new StripedCandy(this.getColor(), this.getDirection());
     }
 
     @Override

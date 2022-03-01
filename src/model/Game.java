@@ -6,9 +6,9 @@ public class Game {
     private final Board board;
     // TODO: game need a user
 
-    public Game(int a, int b, int c, int moves) {
+    public Game(int seed, int moves) {
         countMoves = moves;
-        Function function = new Function(a, b, c);
+        Function function = new Function(seed);
         this.board = new Board(function);
         score = 0;
     }

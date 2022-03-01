@@ -28,10 +28,11 @@ public class GameView extends ViewMenu {
             int x = Integer.parseInt(matcher.group("x"));
             int y = Integer.parseInt(matcher.group("y"));
             Coordinate coordinate = new Coordinate(x, y);
-            char direction = (char) matcher.group("direction").indexOf(0);
+            String direction = matcher.group("direction");
             GameController.getInstance().swipeCell(coordinate, direction);
+            System.out.println("swipe cell successful");
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
     }
 

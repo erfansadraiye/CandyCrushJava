@@ -1,6 +1,6 @@
-package view;
+package view.menu;
 
-public class ScoreBoardView {
+public class ShopView {
     public void run(String command) {
 
     }

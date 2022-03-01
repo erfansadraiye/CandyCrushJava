@@ -1,7 +1,9 @@
-package view;
+package view.menu;
 
 import controller.MainController;
 import controller.RegisterController;
+import view.ConsoleCommands;
+import view.Menu;
 
 import java.util.regex.Matcher;
 

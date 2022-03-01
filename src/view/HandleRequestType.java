@@ -1,6 +1,8 @@
 package view;
 
 
+import view.menu.*;
+
 import java.util.Scanner;
 
 public class HandleRequestType {

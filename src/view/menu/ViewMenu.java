@@ -1,4 +1,6 @@
-package view;
+package view.menu;
+
+import view.HandleRequestType;
 
 public abstract class ViewMenu {
     abstract public void help();

@@ -16,7 +16,7 @@ public enum ConsoleCommands {
     //Scoreboard:
     SHOW_SCOREBOARD("show scoreboard"),
     //GameMenu:
-    SWIPE("^swipe (?<x>\\d+) (?<y>\\d+) (?<direction>[vh])$"),
+    SWIPE("^swipe (?<x>\\d+) (?<y>\\d+) (?<direction>[RLDU])$"),
     ACTIVE_LOLLIPOP_HAMMER("^active lollipop hammer (?<x>\\d+) (?<y>\\d+)$"),
     ACTIVE_COLOUR_BOMB("^active colour bomb (?<x>\\d+) (?<y>\\d+)$"),
     ACTIVE_FREE_SWITCH("^free switch (?<x>\\d+) (?<y>\\d+) (?<direction>[vh])$"),

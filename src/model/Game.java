@@ -21,6 +21,10 @@ public class Game {
         countMoves -= 1;
     }
 
+    public Cell getCellByCoordinate(Coordinate coordinate) {
+        return board.getCell(coordinate);
+    }
+
     public Board getBoard() {
         return board;
     }

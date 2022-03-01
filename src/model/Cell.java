@@ -1,22 +1,24 @@
 package model;
 
 public class Cell {
-    private final int xCoordinate;
-    private final int yCoordinate;
+    private Coordinate coordinate;
     private Candy candy;
 
     public Cell(int xCoordinate, int yCoordinate, Candy candy) {
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
+        coordinate = new Coordinate(xCoordinate, yCoordinate);
         this.candy = candy;
     }
 
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
     public int getXCoordinate() {
-        return xCoordinate;
+        return coordinate.getX();
     }
 
     public int getYCoordinate() {
-        return yCoordinate;
+        return coordinate.getY();
     }
 
     public Candy getCandy() {

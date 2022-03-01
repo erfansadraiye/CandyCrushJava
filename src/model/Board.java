@@ -11,7 +11,7 @@ public class Board {
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++) {
                 Color color = Color.getColorByNumber(function.nextInt());
-                table[i][j] = new Cell(i, j, new Candy(color)); // TODO: color should change
+                table[i][j] = new Cell(i, j, new WrappedCandy(color)); // TODO: this is for test, wrapped candy should change to candy
             }
     }
 
@@ -21,6 +21,10 @@ public class Board {
 
     public Cell[][] getTable() {
         return table;
+    }
+
+    public Cell getCell(Coordinate coordinate) {
+        return table[coordinate.getX()][coordinate.getY()];
     }
 
     public int getSize() {

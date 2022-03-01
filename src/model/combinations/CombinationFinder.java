@@ -1,6 +1,10 @@
 package model.combinations;
 
-import model.*;
+import model.candies.Candy;
+import model.candies.ColourBomb;
+import model.candies.StripedCandy;
+import model.candies.WrappedCandy;
+import model.game.Cell;
 
 public class CombinationFinder {
     public static Combination Find(Cell first, Cell second) {

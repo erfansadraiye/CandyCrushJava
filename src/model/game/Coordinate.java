@@ -1,6 +1,4 @@
-package model;
-
-import java.util.Objects;
+package model.game;
 
 public class Coordinate {
     private final int x;

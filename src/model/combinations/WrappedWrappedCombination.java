@@ -1,7 +1,7 @@
 package model.combinations;
 
-import model.Cell;
-import model.Game;
+import model.game.Cell;
+import model.game.Game;
 
 public class WrappedWrappedCombination implements Combination {
     private final Cell first;

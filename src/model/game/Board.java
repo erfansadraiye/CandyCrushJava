@@ -1,6 +1,6 @@
-package model;
+package model.game;
 
-import java.util.Arrays;
+import model.candies.Candy;
 
 public class Board {
     private final int size = 11;

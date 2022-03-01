@@ -1,6 +1,6 @@
 package model.combinations;
 
-import model.Cell;
+import model.game.Cell;
 
 public interface CellCondition {
     public boolean canExplodes(Cell cell);

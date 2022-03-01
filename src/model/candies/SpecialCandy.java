@@ -1,4 +1,6 @@
-package model;
+package model.candies;
+
+import model.game.Color;
 
 public class SpecialCandy extends Candy {
     public SpecialCandy(Color color) {

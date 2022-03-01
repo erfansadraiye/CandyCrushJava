@@ -1,15 +1,17 @@
 package controller;
 
-import model.*;
+import model.candies.Candy;
 import model.combinations.CellCondition;
 import model.combinations.Combination;
 import model.combinations.CombinationFinder;
 import model.combinations.NormalCombination;
+import model.game.Cell;
+import model.game.Color;
+import model.game.Coordinate;
+import model.game.Game;
 import view.HandleRequestType;
 import view.Menu;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 

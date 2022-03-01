@@ -1,5 +1,9 @@
-package model;
+package model.candies;
 
+import model.game.Cell;
+import model.game.Color;
+import model.game.Coordinate;
+import model.game.Direction;
 import model.combinations.CellCondition;
 
 public class StripedCandy extends SpecialCandy {

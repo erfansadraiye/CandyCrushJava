@@ -1,4 +1,6 @@
-package model;
+package model.candies;
+
+import model.game.Color;
 
 public class ColourBomb extends SpecialCandy {
     public ColourBomb() {

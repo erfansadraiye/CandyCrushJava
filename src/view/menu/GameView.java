@@ -1,8 +1,7 @@
 package view.menu;
 
 import controller.GameController;
-import model.Coordinate;
-import model.Game;
+import model.game.Coordinate;
 import view.ConsoleCommands;
 
 import java.util.regex.Matcher;

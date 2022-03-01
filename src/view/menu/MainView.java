@@ -3,7 +3,6 @@ package view.menu;
 import controller.GameController;
 import controller.MainController;
 import controller.RegisterController;
-import model.Game;
 import view.ConsoleCommands;
 import view.Menu;
 

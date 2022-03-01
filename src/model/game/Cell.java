@@ -1,5 +1,6 @@
-package model;
+package model.game;
 
+import model.candies.Candy;
 import model.combinations.CellCondition;
 
 public class Cell {

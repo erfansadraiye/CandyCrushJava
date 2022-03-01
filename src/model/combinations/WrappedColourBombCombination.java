@@ -1,6 +1,10 @@
 package model.combinations;
 
-import model.*;
+import model.candies.ColourBomb;
+import model.game.Cell;
+import model.game.Color;
+import model.game.Coordinate;
+import model.game.Game;
 
 public class WrappedColourBombCombination implements Combination {
     private final Cell first;

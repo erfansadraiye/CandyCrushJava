@@ -1,9 +1,9 @@
 package model.combinations;
 
-import model.Cell;
-import model.Color;
-import model.Coordinate;
-import model.Game;
+import model.game.Cell;
+import model.game.Color;
+import model.game.Coordinate;
+import model.game.Game;
 
 public class NormalCombination implements Combination {
 

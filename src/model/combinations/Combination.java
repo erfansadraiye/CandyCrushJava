@@ -1,8 +1,6 @@
 package model.combinations;
 
-import model.Board;
-import model.Cell;
-import model.Game;
+import model.game.Game;
 
 public interface Combination {
     public CellCondition getCellCondition(Game game);

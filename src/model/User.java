@@ -6,9 +6,13 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String username;
-    private String password;
-    private String nickname;
+    private final String username;
+    private final String password;
+    private final String nickname;
+
+    private long highScore;
+    private long wallet;
+    private int level;
 
     public User(String username, String password, String nickname) {
         this.username = username;
@@ -16,15 +20,30 @@ public class User {
         this.nickname = nickname;
     }
 
-    public static User getUserByUsername(String username) {
-        ArrayList<User> allUsers = RegisterController.getInstance().getAllUsers();
-        if (RegisterController.getInstance().getUserPass().containsKey(username)) {
-            for (User user : allUsers) {
-                if (user.getUsername().equals(username))
-                    return user;
-            }
-        }
-        return null;
+
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public long getHighScore() {
+        return highScore;
+    }
+
+    public void setHighScore(long highScore) {
+        this.highScore = highScore;
+    }
+
+    public long getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(long wallet) {
+        this.wallet = wallet;
     }
 
     public String getNickname() {

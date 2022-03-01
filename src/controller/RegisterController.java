@@ -45,10 +45,19 @@ public class RegisterController {
             throw new Exception("username doesn't exist!");
         if (!userPass.get(username).equals(password))
             throw new Exception("password is incorrect!");
-        onlineUser = User.getUserByUsername(username);
+        onlineUser = RegisterController.getUserByUsername(username);
         HandleRequestType.currentMenu = Menu.MAIN_MENU;
     }
 
+    public static User getUserByUsername(String username) {
+        if (getInstance().userPass.containsKey(username)) {
+            for (User user : getInstance().allUsers) {
+                if (user.getUsername().equals(username))
+                    return user;
+            }
+        }
+        return null;
+    }
 
     public void logout() {
         onlineUser = null;

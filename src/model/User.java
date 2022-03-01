@@ -13,18 +13,20 @@ public class User {
     private int countColourBomb;
     private int countFreeSwitch;
     private int countStripedBrush;
+    private int countWrappedBrush;
 
     public User(String username, String password, String nickname) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
         setHighScore(0);
-        setWallet(0);
+        setWallet(100);
         this.countLollipopHammer = 0;
         this.countExtraMoves = 0;
         this.countColourBomb = 0;
         this.countFreeSwitch = 0;
         this.countStripedBrush = 0;
+        this.countWrappedBrush = 0;
     }
 
     public int getCountLollipopHammer() {
@@ -35,8 +37,8 @@ public class User {
         countLollipopHammer += count;
     }
 
-    public void decreaseCountLollipopHammer(int count) {
-        countLollipopHammer -= count;
+    public void decreaseCountLollipopHammer() {
+        countLollipopHammer--;
     }
 
     public int getCountExtraMoves() {
@@ -47,8 +49,8 @@ public class User {
         countExtraMoves += count;
     }
 
-    public void decreaseCountExtraMoves(int count) {
-        countExtraMoves -= count;
+    public void decreaseCountExtraMoves() {
+        countExtraMoves--;
     }
 
     public int getCountColourBomb() {
@@ -59,8 +61,8 @@ public class User {
         this.countColourBomb += count;
     }
 
-    public void decreaseCountColourBomb(int count) {
-        this.countColourBomb -= count;
+    public void decreaseCountColourBomb() {
+        this.countColourBomb--;
     }
 
     public int getCountFreeSwitch() {
@@ -71,8 +73,8 @@ public class User {
         this.countFreeSwitch += count;
     }
 
-    public void decreaseCountFreeSwitch(int count) {
-        this.countFreeSwitch -= count;
+    public void decreaseCountFreeSwitch() {
+        this.countFreeSwitch--;
     }
 
     public int getCountStripedBrush() {
@@ -83,16 +85,29 @@ public class User {
         this.countStripedBrush += count;
     }
 
-    public void decreaseCountStripedBrush(int count) {
-        this.countStripedBrush -= count;
+    public void decreaseCountStripedBrush() {
+        this.countStripedBrush--;
     }
 
-    public void decreaseMoney(long amount) {
-        wallet += amount;
+    public int getCountWrappedBrush() {
+        return countStripedBrush;
     }
 
-    public void increaseMoney(long cost) {
+    public void increaseCountWrappedBrush(int count) {
+        this.countWrappedBrush += count;
+    }
+
+    public void decreaseCountWrappedBrush() {
+        this.countWrappedBrush--;
+    }
+
+
+    public void decreaseMoney(long cost) {
         wallet -= cost;
+    }
+
+    public void increaseMoney(long amount) {
+        wallet += amount;
     }
 
     public long getHighScore() {

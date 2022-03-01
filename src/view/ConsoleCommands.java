@@ -31,11 +31,8 @@ public enum ConsoleCommands {
     //Shop menu
     SHOW_MONEY("^show money$"),
     SHOW_INVENTORY("^show inventory$"),
-    BUY_LOLLIPOP_HAMMER("^buy lollipop hammer (?<count>\\d+)$"),
-    BUY_EXTRA_MOVES("^buy extra moves (?<count>\\d+)$"),
-    BUY_COLOUR_BOMB("^buy colour bomb (?<count>\\d+)$"),
-    BUY_FREE_SWITCH("^buy free switch (?<count>\\d+)$"),
-    BUY_STRIPED_BRUSH("^buy striped brush (?<count>\\d+)$"),
+    BUY_BOOSTER("^buy (?<booster>\\w+) (?<count>\\d+)$"),
+
     BACK("^back$"),
     SHOW_CURRENT_MENU("^show current menu$"),
     MENU_EXIT("^menu exit$"),

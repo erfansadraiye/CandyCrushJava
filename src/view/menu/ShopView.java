@@ -3,6 +3,7 @@ package view.menu;
 import controller.RegisterController;
 import controller.ShopController;
 import model.User;
+import model.boosters.BoosterType;
 import view.ConsoleCommands;
 import view.HandleRequestType;
 import view.Menu;
@@ -22,70 +23,24 @@ public class ShopView extends ViewMenu {
             showMoney();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_INVENTORY, input)) != null) {
             showInventory();
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BUY_LOLLIPOP_HAMMER, input)) != null) {
-            buyLollipopHammer(matcher);
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BUY_COLOUR_BOMB, input)) != null) {
-            buyColourBomb(matcher);
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BUY_EXTRA_MOVES, input)) != null) {
-            buyExtraMoves(matcher);
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BUY_FREE_SWITCH, input)) != null) {
-            buyFreeSwitch(matcher);
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BUY_STRIPED_BRUSH, input)) != null) {
-            buyStripedBrush(matcher);
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BUY_BOOSTER, input)) != null) {
+            buyBooster(matcher);
         } else {
             System.out.println("invalid command");
         }
     }
 
-    private void buyLollipopHammer(Matcher matcher) {
+    private void buyBooster(Matcher matcher) {
         int count = Integer.parseInt(matcher.group("count"));
+        BoosterType boosterType = BoosterType.getBoosterByName(matcher.group("booster"));
         try {
-            ShopController.getInstance().buyLollipopHammer(count);
+            ShopController.getInstance().buyBooster(boosterType,count);
             System.out.println("Lollipop Hammer Sold.");
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void buyColourBomb(Matcher matcher) {
-        int count = Integer.parseInt(matcher.group("count"));
-        try {
-            ShopController.getInstance().buyColourBomb(count);
-            System.out.println("Colour Bomb Sold.");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void buyExtraMoves(Matcher matcher) {
-        int count = Integer.parseInt(matcher.group("count"));
-        try {
-            ShopController.getInstance().buyExtraMoves(count);
-            System.out.println("Extra Moves Sold.");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void buyFreeSwitch(Matcher matcher) {
-        int count = Integer.parseInt(matcher.group("count"));
-        try {
-            ShopController.getInstance().buyFreeSwitch(count);
-            System.out.println("Free Switch Sold.");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private void buyStripedBrush(Matcher matcher) {
-        int count = Integer.parseInt(matcher.group("count"));
-        try {
-            ShopController.getInstance().buyStripedBrush(count);
-            System.out.println("Striped Brush Sold.");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
 
     private void showInventory() {
         User onlineUser = RegisterController.getInstance().getOnlineUser();

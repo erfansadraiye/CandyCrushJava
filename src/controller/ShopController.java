@@ -1,5 +1,8 @@
 package controller;
 
+import model.User;
+import model.boosters.BoosterType;
+
 public class ShopController {
     private static ShopController instance;
 
@@ -13,24 +16,36 @@ public class ShopController {
         return instance;
     }
 
-    public void buyLollipopHammer(int count) throws Exception {
-        //TODO check money and count>0
+    public void buyBooster(BoosterType boosterType, int count) throws Exception {
+        if (boosterType == null)
+            throw new Exception("booster doesn't exist");
+        int cost = count * boosterType.getPrice();
+        User onlineUser = RegisterController.getInstance().getOnlineUser();
+        if (cost > onlineUser.getWallet())
+            throw new Exception("not enough money!");
+        onlineUser.decreaseMoney(cost);
+        switch (boosterType) {
+            case LOLLIPOP_HAMMER:
+                onlineUser.increaseCountLollipopHammer(count);
+                break;
+            case COLOUR_BOMB_BRUSH:
+                onlineUser.increaseCountColourBomb(count);
+                break;
+            case EXTRA_MOVES:
+                onlineUser.increaseCountExtraMoves(count);
+                break;
+            case FREE_SWITCH:
+                onlineUser.increaseCountFreeSwitch(count);
+                break;
+            case STRIPED_BRUSH:
+                onlineUser.increaseCountStripedBrush(count);
+                break;
+            case WRAPPED_BRUSH:
+                onlineUser.increaseCountWrappedBrush(count);
+                break;
+        }
+
     }
 
-    public void buyColourBomb(int count) throws Exception {
-        //TODO
-    }
-
-    public void buyExtraMoves(int count) throws Exception {
-        //TODO
-    }
-
-    public void buyFreeSwitch(int count) throws Exception {
-        //TODO
-    }
-
-    public void buyStripedBrush(int count) throws Exception {
-        //TODO
-    }
 
 }

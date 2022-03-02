@@ -11,7 +11,6 @@ public class HandleRequestType {
     ShopView shopView;
     GameView gameView;
     MainView mainView;
-    ScoreBoardView scoreBoardView;
     ProfileView profileView;
     RegisterView registerView;
     String command = "";
@@ -28,10 +27,6 @@ public class HandleRequestType {
         return shopView;
     }
 
-    public ScoreBoardView getScoreBoardView() {
-        return scoreBoardView;
-    }
-
     public MainView getMainView() {
         return mainView;
     }
@@ -40,7 +35,6 @@ public class HandleRequestType {
     public void start() throws Exception {
         registerView = new RegisterView();
         profileView = new ProfileView();
-        scoreBoardView = new ScoreBoardView();
         shopView = new ShopView();
         gameView = new GameView();
         mainView = new MainView();
@@ -60,8 +54,6 @@ public class HandleRequestType {
                 gameView.run(command);
             } else if (currentMenu == Menu.SHOP) {
                 shopView.run(command);
-            } else if (currentMenu == Menu.SCOREBOARD) {
-                scoreBoardView.run(command);
             } else {
                 throw new RuntimeException("core adaption failed!");
             }

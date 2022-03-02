@@ -27,7 +27,7 @@ public enum ConsoleCommands {
     SHOW_BOOSTERS("^show boosters$"),
 
     //Profile menu:
-    CHANGE_PASSWORD("^change password (?<old_password>\\w+) (?<new_password>\\w+)$"),
+    CHANGE_PASSWORD("^change password (?<old_password>\\S+) (?<new_password>\\S+)$"),
     SHOW_INFO("^show information$"),
     //Shop menu
     SHOW_MONEY("^show money$"),

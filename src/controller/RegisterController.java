@@ -24,33 +24,6 @@ public class RegisterController {
         return instance;
     }
 
-    public ArrayList<User> getAllUsers() {
-        return allUsers;
-    }
-
-    public HashMap<String, String> getUserPass() {
-        return userPass;
-    }
-
-    public void createUser(String username, String password, String nickname) throws Exception {
-        if (userPass.containsKey(username))
-            throw new Exception("username exists!");
-        if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+-=|]).{8,32}$"))
-            throw new Exception("password is weak!");
-        User newUser = new User(username, password, nickname);
-        userPass.put(username, password);
-        allUsers.add(newUser);
-    }
-
-    public void loginUser(String username, String password) throws Exception {
-        if (!userPass.containsKey(username))
-            throw new Exception("username doesn't exist!");
-        if (!userPass.get(username).equals(password))
-            throw new Exception("password is incorrect!");
-        onlineUser = RegisterController.getUserByUsername(username);
-        HandleRequestType.currentMenu = Menu.MAIN_MENU;
-    }
-
     public static User getUserByUsername(String username) {
         if (getInstance().userPass.containsKey(username)) {
             for (User user : getInstance().allUsers) {
@@ -61,12 +34,45 @@ public class RegisterController {
         return null;
     }
 
+    public ArrayList<User> getAllUsers() {
+        return allUsers;
+    }
+
+    public HashMap<String, String> getUserPass() {
+        return userPass;
+    }
+
+    public void createUser(String username, String password, String nickname) throws Exception {
+        if (!username.matches("\\w+"))
+            throw new Exception("username's format is invalid!");
+        if (!nickname.matches("[a-zA-Z ]+"))
+            throw new Exception("nickname's format is invalid!");
+        if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+-=|]).{8,32}$"))
+            throw new Exception("password is weak!");
+        if (userPass.containsKey(username))
+            throw new Exception("username already exists!");
+        User newUser = new User(username, password, nickname);
+        userPass.put(username, password);
+        allUsers.add(newUser);
+    }
+
+    public void loginUser(String username, String password) throws Exception {
+        if (!username.matches("\\w+"))
+            throw new Exception("username's format is invalid!");
+        if (!userPass.containsKey(username))
+            throw new Exception("username doesn't exist!");
+        if (!userPass.get(username).equals(password))
+            throw new Exception("incorrect password!");
+        onlineUser = RegisterController.getUserByUsername(username);
+        HandleRequestType.currentMenu = Menu.MAIN_MENU;
+    }
+
     public void logout() {
         onlineUser = null;
         HandleRequestType.currentMenu = Menu.REGISTER_MENU;
     }
 
-    public void changePassword(String oldPassword,String newPassword) throws Exception {
+    public void changePassword(String oldPassword, String newPassword) throws Exception {
         if (!oldPassword.equals(onlineUser.getPassword()))
             throw new Exception("password is incorrect!");
         if (!newPassword.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+-=|]).{8,32}$"))

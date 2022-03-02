@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public enum ConsoleCommands {
     //RegisterMenu:
-    REGISTER("^register (?<username>\\w+) (?<password>\\S+) (?<nickname>\\w+)$"),
-    LOGIN("^login (?<username>\\w+) (?<password>\\S+)$"),
+    REGISTER("^register (?<username>\\S+) (?<password>\\S+) (?<nickname>.+)$"),
+    LOGIN("^login (?<username>\\S+) (?<password>\\S+)$"),
 
     //MainManu:
     MENU_ENTER("^enter (?<menu>\\w+) menu$"),

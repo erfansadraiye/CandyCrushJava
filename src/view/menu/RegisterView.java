@@ -31,7 +31,7 @@ public class RegisterView extends ViewMenu {
         String nickname = matcher.group("nickname");
         try {
             RegisterController.getInstance().createUser(username, password, nickname);
-            System.out.println("user created successfully!");
+            System.out.println("user successfully created!");
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
@@ -42,7 +42,7 @@ public class RegisterView extends ViewMenu {
         String password = matcher.group("password");
         try {
             RegisterController.getInstance().loginUser(username, password);
-            System.out.println("user logged in successfully!");
+            System.out.println("user successfully logged in!");
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }

@@ -1,19 +1,19 @@
 package controller;
 
-import model.candies.Candy;
+import model.boosters.BoosterType;
+import model.candies.*;
 import model.combinations.CellCondition;
 import model.combinations.Combination;
 import model.combinations.CombinationFinder;
 import model.combinations.NormalCombination;
-import model.game.Cell;
-import model.game.Color;
-import model.game.Coordinate;
-import model.game.Game;
+import model.game.*;
 import view.HandleRequestType;
 import view.Menu;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
+// TODO: Score should be updated
 
 public class GameController {
     private static GameController instance = null;
@@ -28,7 +28,7 @@ public class GameController {
     }
 
 
-    public void swipeCell(Coordinate coordinate, String direction) throws Exception {
+    public void swipeCell(Coordinate coordinate, String direction, boolean forceToSwipe) throws Exception {
         if (!coordinate.isValid(game.getBoard().getSize()))
             throw new Exception("invalid cell");
         if (!coordinate.getAdjacent(direction).isValid(game.getBoard().getSize()))
@@ -40,12 +40,13 @@ public class GameController {
         Candy secondCandy = (Candy) second.getCandy().clone();
         game.getBoard().setCandy(first.getCoordinate(), secondCandy);
         game.getBoard().setCandy(second.getCoordinate(), firstCandy);
-        if (!eatCandies(combination.getCellCondition(game))) {
+        if (!forceToSwipe && !eatCandies(combination.getCellCondition(game))) {
             game.getBoard().setCandy(first.getCoordinate(), firstCandy);
             game.getBoard().setCandy(second.getCoordinate(), secondCandy);
             throw new Exception("invalid move");
         }
-        game.decreaseCountMoves();
+        if (!forceToSwipe)
+            game.decreaseCountMoves();
     }
 
     public boolean eatCandies(CellCondition condition) {
@@ -58,6 +59,7 @@ public class GameController {
                     queue.add(new Coordinate(i, j));
                     mark[i][j] = true;
                 }
+
         if (queue.isEmpty())
             return false;
         while (!queue.isEmpty()) { // TODO: felan oon khoone avvali ha ham explode mishan
@@ -101,6 +103,72 @@ public class GameController {
         }
         eatCandies(new NormalCombination().getCellCondition(game));
         return true;
+    }
+
+    public void activeLollipop(Coordinate coordinate) throws Exception {
+        if (!coordinate.isValid(game.getBoard().getSize()))
+            throw new Exception("invalid cell");
+        if (RegisterController.getInstance().getOnlineUser().getCountLollipopHammer() == 0)
+            throw new Exception("not enough lollipop hammer");
+        RegisterController.getInstance().getOnlineUser().decreaseCountLollipopHammer();
+        Cell cell = game.getCellByCoordinate(coordinate);
+        eatCandies(cell.getExplodeCondition());
+    }
+
+    public void activateColourBombBrush(Coordinate coordinate) throws Exception {
+        if (!coordinate.isValid(game.getBoard().getSize()))
+            throw new Exception("invalid cell");
+        if (RegisterController.getInstance().getOnlineUser().getCountColourBomb() == 0)
+            throw new Exception("not enough colour bomb brush");
+        Cell cell = game.getCellByCoordinate(coordinate);
+        if (cell.getCandy() instanceof ColourBomb)
+            throw new Exception("can't brush a bomb");
+        game.getBoard().setCandy(coordinate, new ColourBomb());
+        RegisterController.getInstance().getOnlineUser().decreaseCountColourBomb();
+    }
+
+    public void activateWrappedBrush(Coordinate coordinate) throws Exception {
+        if (!coordinate.isValid(game.getBoard().getSize()))
+            throw new Exception("invalid cell");
+        if (RegisterController.getInstance().getOnlineUser().getCountWrappedBrush() == 0)
+            throw new Exception("not enough wrapped brush");
+        Cell cell = game.getCellByCoordinate(coordinate);
+        if (cell.getCandy() instanceof ColourBomb)
+            throw new Exception("can't brush a bomb");
+        if (cell.getCandy() instanceof WrappedCandy)
+            throw new Exception("this is already a wrapped candy");
+        RegisterController.getInstance().getOnlineUser().decreaseCountWrappedBrush();
+        game.getBoard().setCandy(coordinate, new WrappedCandy(cell.getCandy().getColor()));
+    }
+
+    public void activateStripedBrush(Coordinate coordinate, Direction direction) throws Exception {
+        if (!coordinate.isValid(game.getBoard().getSize()))
+            throw new Exception("invalid cell");
+        if (RegisterController.getInstance().getOnlineUser().getCountStripedBrush() == 0)
+            throw new Exception("not enough striped brush");
+        Cell cell = game.getCellByCoordinate(coordinate);
+        if (cell.getCandy() instanceof ColourBomb)
+            throw new Exception("can't brush a bomb");
+        if (cell.getCandy() instanceof StripedCandy)
+            throw new Exception("this is already a striped candy");
+        RegisterController.getInstance().getOnlineUser().decreaseCountStripedBrush();
+        game.getBoard().setCandy(coordinate, new StripedCandy(cell.getCandy().getColor(), direction));
+    }
+
+    public void activateFreeSwitch(Coordinate coordinate, String direction) throws Exception {
+        if (!coordinate.isValid(game.getBoard().getSize()))
+            throw new Exception("invalid cell");
+        if (!coordinate.getAdjacent(direction).isValid(game.getBoard().getSize()))
+            throw new Exception("invalid destination");
+        if (RegisterController.getInstance().getOnlineUser().getCountFreeSwitch() == 0)
+            throw new Exception("not enough free switch");
+        swipeCell(coordinate, direction, true);
+    }
+
+    public void activateExtraMove() throws Exception {
+        if (RegisterController.getInstance().getOnlineUser().getCountExtraMoves() == 0)
+            throw new Exception("not enough extra brush");
+        game.increaseCountMoves(5);
     }
 
     public static GameController getInstance() {

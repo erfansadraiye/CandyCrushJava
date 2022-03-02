@@ -18,7 +18,7 @@ public class ShopController {
 
     public void buyBooster(BoosterType boosterType, int count) throws Exception {
         if (boosterType == null)
-            throw new Exception("booster doesn't exist");
+            throw new Exception("invalid command");
         int cost = count * boosterType.getPrice();
         User onlineUser = RegisterController.getInstance().getOnlineUser();
         if (cost > onlineUser.getWallet())

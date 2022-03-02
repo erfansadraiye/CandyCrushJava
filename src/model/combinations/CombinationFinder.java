@@ -34,6 +34,9 @@ public class CombinationFinder {
         if (a instanceof StripedCandy && b instanceof StripedCandy)
             return new StripedStripedCombination(first, second);
 
+        if (a instanceof ColourBomb || b instanceof ColourBomb)
+            return new NormalColourBombCombination(first, second);
+
         return new NormalCombination();
     }
 }

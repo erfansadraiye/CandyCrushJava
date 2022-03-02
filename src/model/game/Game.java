@@ -17,6 +17,10 @@ public class Game {
         score += x;
     }
 
+    public void increaseCountMoves(int value) {
+        countMoves += value;
+    }
+
     public void decreaseCountMoves() {
         countMoves -= 1;
     }

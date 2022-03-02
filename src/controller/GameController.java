@@ -1,5 +1,6 @@
 package controller;
 
+import model.User;
 import model.boosters.BoosterType;
 import model.candies.*;
 import model.combinations.CellCondition;
@@ -12,8 +13,6 @@ import view.Menu;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
-// TODO: Score should be updated
 
 public class GameController {
     private static GameController instance = null;
@@ -40,7 +39,7 @@ public class GameController {
         Candy secondCandy = (Candy) second.getCandy().clone();
         game.getBoard().setCandy(first.getCoordinate(), secondCandy);
         game.getBoard().setCandy(second.getCoordinate(), firstCandy);
-        if (!forceToSwipe && !eatCandies(combination.getCellCondition(game))) {
+        if (!forceToSwipe && !eatCandies(combination.getCellCondition(game), 1)) {
             game.getBoard().setCandy(first.getCoordinate(), firstCandy);
             game.getBoard().setCandy(second.getCoordinate(), secondCandy);
             throw new Exception("invalid move");
@@ -49,9 +48,9 @@ public class GameController {
             game.decreaseCountMoves();
     }
 
-    public boolean eatCandies(CellCondition condition) {
+    public boolean eatCandies(CellCondition condition, int chainCount) {
         int size = game.getBoard().getSize();
-        boolean[][] mark = new boolean[size][size]; // TODO: check if it initializes as 0
+        boolean[][] mark = new boolean[size][size];
         Queue<Coordinate> queue = new LinkedList<>();
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
@@ -74,8 +73,10 @@ public class GameController {
         }
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
-                if (mark[i][j])
+                if (mark[i][j]) {
+                    game.increaseScore(chainCount * 60);
                     game.getBoard().setCandy(new Coordinate(i, j), null);
+                }
         for (int i = size - 1; i >= 0; i--) {
             for (int j = 0; j < size; j++) {
                 if (!mark[i][j]) {
@@ -101,7 +102,7 @@ public class GameController {
                 }
             }
         }
-        eatCandies(new NormalCombination().getCellCondition(game));
+        eatCandies(new NormalCombination().getCellCondition(game), chainCount + 1);
         return true;
     }
 
@@ -112,7 +113,7 @@ public class GameController {
             throw new Exception("not enough lollipop hammer");
         RegisterController.getInstance().getOnlineUser().decreaseCountLollipopHammer();
         Cell cell = game.getCellByCoordinate(coordinate);
-        eatCandies(cell.getExplodeCondition());
+        eatCandies(cell.getExplodeCondition(), 1);
     }
 
     public void activateColourBombBrush(Coordinate coordinate) throws Exception {
@@ -181,5 +182,14 @@ public class GameController {
     @Override
     public String toString() {
         return game.toString();
+    }
+
+    public void doesGameContinue() throws Exception {
+        if (game.getCountMoves() > 0)
+            return;
+        User player = RegisterController.getInstance().getOnlineUser();
+        player.setHighScore(game.getScore());
+        player.increaseMoney(game.getScore() / 10);
+        throw new Exception("game has ended. your score is " + game.getScore());
     }
 }

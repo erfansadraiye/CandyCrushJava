@@ -115,7 +115,8 @@ public class User {
     }
 
     public void setHighScore(long highScore) {
-        this.highScore = highScore;
+        if (highScore > this.highScore)
+            this.highScore = highScore;
     }
 
     public long getWallet() {

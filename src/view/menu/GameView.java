@@ -49,6 +49,7 @@ public class GameView extends ViewMenu {
             String direction = matcher.group("direction");
             GameController.getInstance().swipeCell(coordinate, direction, false);
             System.out.println("swipe cell successful");
+            GameController.getInstance().doesGameContinue();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

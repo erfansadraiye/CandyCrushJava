@@ -118,6 +118,7 @@ public class GameView extends ViewMenu {
     void activeExtraMoves(Matcher matcher) {
         try {
             GameController.getInstance().activateExtraMove();
+            System.out.println("extra moves has activated successfully");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -83,7 +83,7 @@ public class GameView extends ViewMenu {
         try {
             Coordinate coordinate = getCoordinateByMatcher(matcher);
             GameController.getInstance().activateWrappedBrush(coordinate);
-            System.out.println("wrapped bomb brush has activated successfully");
+            System.out.println("wrapped brush has activated successfully");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -98,7 +98,7 @@ public class GameView extends ViewMenu {
             else
                 direction = Direction.HORIZONTAL;
             GameController.getInstance().activateStripedBrush(coordinate, direction);
-            System.out.println("striped bomb brush has activated successfully");
+            System.out.println("striped brush has activated successfully");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

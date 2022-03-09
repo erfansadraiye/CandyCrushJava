@@ -168,7 +168,7 @@ public class GameController {
 
     public void activateExtraMove() throws Exception {
         if (RegisterController.getInstance().getOnlineUser().getCountExtraMoves() == 0)
-            throw new Exception("not enough extra brush");
+            throw new Exception("not enough extra moves");
         game.increaseCountMoves(5);
     }
 

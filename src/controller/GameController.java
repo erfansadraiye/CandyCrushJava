@@ -190,7 +190,7 @@ public class GameController {
         User player = RegisterController.getInstance().getOnlineUser();
         player.setHighScore(game.getScore());
         player.increaseMoney(game.getScore() / 10);
-        HandleRequestType.currentMenu = Menu.MAIN_MENU;
+        HandleRequestType.currentMenu  = Menu.MAIN_MENU;
         throw new Exception("game has ended. your score is " + game.getScore());
     }
 }

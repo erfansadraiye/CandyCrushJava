@@ -13,8 +13,6 @@ public class ProfileView extends ViewMenu {
         Matcher matcher;
         if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_CURRENT_MENU, input)) != null) {
             showCurrentMenu();
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.HELP, input)) != null) {
-            help();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BACK, input)) != null) {
             back();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.CHANGE_PASSWORD, input)) != null) {
@@ -50,9 +48,4 @@ public class ProfileView extends ViewMenu {
         HandleRequestType.currentMenu = Menu.MAIN_MENU;
     }
 
-    @Override
-    public void help() {
-        //TODO fill
-        System.out.println("help");
-    }
 }

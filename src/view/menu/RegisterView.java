@@ -7,9 +7,6 @@ import java.util.regex.Matcher;
 
 public class RegisterView extends ViewMenu {
 
-    public void help() {
-        System.out.println("help");//TODO fill
-    }
 
     public void run(String input) {
         Matcher matcher;

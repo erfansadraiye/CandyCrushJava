@@ -23,18 +23,12 @@ public class MainView extends ViewMenu {
             logout();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_CURRENT_MENU, input)) != null) {
             showCurrentMenu();
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.HELP, input)) != null) {
-            help();
         } else {
             System.out.println("invalid command");
         }
 
     }
 
-    public void help() {
-        //TODO
-        System.out.println("help");
-    }
 
     private void showScoreBoard() {
         ArrayList<User> users = MainController.getInstance().getSortedScoreBoard();

@@ -5,7 +5,6 @@ import java.util.Random;
 public class Function {
     private final Random randomobj;
 
-    private int x = 0, y = 0;
     private int cnt = 0;
 
     public Function(int seed) {
@@ -20,5 +19,4 @@ public class Function {
         else
             return randomobj.nextInt(3) + 2;
     }
-
 }

@@ -15,8 +15,6 @@ public class ShopView extends ViewMenu {
         Matcher matcher;
         if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_CURRENT_MENU, input)) != null) {
             showCurrentMenu();
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.HELP, input)) != null) {
-            help();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BACK, input)) != null) {
             back();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_MONEY, input)) != null) {
@@ -34,8 +32,8 @@ public class ShopView extends ViewMenu {
         int count = Integer.parseInt(matcher.group("count"));
         BoosterType boosterType = BoosterType.getBoosterByName(matcher.group("booster"));
         try {
-            ShopController.getInstance().buyBooster(boosterType,count);
-            System.out.println(boosterType.getName()+" was bought!");
+            ShopController.getInstance().buyBooster(boosterType, count);
+            System.out.println(boosterType.getName() + " was bought!");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -53,13 +51,6 @@ public class ShopView extends ViewMenu {
 
     private void showMoney() {
         System.out.println("wallet : " + RegisterController.getInstance().getOnlineUser().getWallet());
-    }
-
-
-    @Override
-    public void help() {
-        //TODO fill
-        System.out.println("help");
     }
 
     private void back() {

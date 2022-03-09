@@ -16,8 +16,6 @@ public class GameView extends ViewMenu {
         Matcher matcher;
         if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_CURRENT_MENU, input)) != null) {
             showCurrentMenu();
-        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.HELP, input)) != null) {
-            help();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SWIPE, input)) != null) {
             swipe(matcher);
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.ACTIVE_LOLLIPOP_HAMMER, input)) != null) {
@@ -142,9 +140,4 @@ public class GameView extends ViewMenu {
         System.out.println("Striped Brush : " + onlineUser.getCountStripedBrush());
     }
 
-    @Override
-    public void help() {
-        //TODO fill
-        System.out.println("help");
-    }
 }

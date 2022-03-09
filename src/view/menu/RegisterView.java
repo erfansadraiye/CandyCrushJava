@@ -14,6 +14,8 @@ public class RegisterView extends ViewMenu {
             loginUser(matcher);
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.REGISTER, input)) != null) {
             createNewUser(matcher);
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.LIST_USER, input)) != null) {
+            listOfUsers();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_CURRENT_MENU, input)) != null) {
             showCurrentMenu();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.EXIT, input)) != null) {
@@ -22,6 +24,10 @@ public class RegisterView extends ViewMenu {
             System.out.println("invalid command");
         }
 
+    }
+
+    private void listOfUsers() {
+        System.out.println(RegisterController.getInstance().listOfUsers());
     }
 
     private void exit() {

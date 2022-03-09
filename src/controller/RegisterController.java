@@ -83,4 +83,25 @@ public class RegisterController {
     public User getOnlineUser() {
         return onlineUser;
     }
+
+    public String listOfUsers() {
+        StringBuilder output = new StringBuilder();
+        output.append(allUsers.size());
+        output.append(" user have registered!");
+        for (int i = 1; i <= allUsers.size(); i++) {
+            output.append('\n').append(i);
+            output.append(" - ");
+            output.append(allUsers.get(i).getNickname());
+        }
+        return output.toString();
+    }
+
+    public void deleteAccount(String password) throws Exception {
+        if (!onlineUser.getPassword().equals(password))
+            throw new Exception("incorrect password!");
+        allUsers.remove(onlineUser);
+        userPass.remove(onlineUser.getUsername());
+        onlineUser = null;
+        HandleRequestType.currentMenu = Menu.REGISTER_MENU;
+    }
 }

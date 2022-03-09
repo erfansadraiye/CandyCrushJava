@@ -17,6 +17,8 @@ public class ProfileView extends ViewMenu {
             back();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.CHANGE_PASSWORD, input)) != null) {
             changePassword(matcher);
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.REMOVE_USER, input)) != null) {
+            removeAccount(matcher);
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_INFO, input)) != null) {
             showInfo();
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.BACK, input)) != null) {
@@ -26,9 +28,20 @@ public class ProfileView extends ViewMenu {
         }
     }
 
+    private void removeAccount(Matcher matcher) {
+        String password = matcher.group("password");
+        try {
+            RegisterController.getInstance().deleteAccount(password);
+            System.out.println("account deleted!");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     private void showInfo() {
         User onlineUser = RegisterController.getInstance().getOnlineUser();
         System.out.println("username : " + onlineUser.getUsername());
+        System.out.println("nickname : " + onlineUser.getNickname());
         System.out.println("money : " + onlineUser.getWallet());
         System.out.println("highscore : " + onlineUser.getHighScore());
     }

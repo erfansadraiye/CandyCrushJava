@@ -7,7 +7,7 @@ public enum ConsoleCommands {
     //RegisterMenu:
     REGISTER("^register u (?<username>\\S+) p (?<password>\\S+) n (?<nickname>.+)$"),
     LOGIN("^login u (?<username>\\S+) p (?<password>\\S+)$"),
-
+    LIST_USER("^list of users$"),
     //MainManu:
     MENU_ENTER("^enter (?<menu>\\w+) menu$"),
     START_GAME("^start new game (?<seed>\\d+) (?<moves>\\d+)"),
@@ -29,6 +29,7 @@ public enum ConsoleCommands {
     //Profile menu:
     CHANGE_PASSWORD("^change password (?<oldpassword>\\S+) (?<newpassword>\\S+)$"),
     SHOW_INFO("^show information$"),
+    REMOVE_USER("^remove account (?<password>\\S+)$"),
     //Shop menu
     SHOW_MONEY("^show money$"),
     SHOW_INVENTORY("^show inventory$"),

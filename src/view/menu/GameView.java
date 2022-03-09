@@ -139,6 +139,7 @@ public class GameView extends ViewMenu {
         System.out.println("Extra Moves : " + onlineUser.getCountExtraMoves());
         System.out.println("Free Switch : " + onlineUser.getCountFreeSwitch());
         System.out.println("Striped Brush : " + onlineUser.getCountStripedBrush());
+        System.out.println("Wrapped Brush : " + onlineUser.getCountWrappedBrush());
     }
 
 }

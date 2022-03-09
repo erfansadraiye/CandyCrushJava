@@ -33,7 +33,7 @@ public enum ConsoleCommands {
     //Shop menu
     SHOW_MONEY("^show money$"),
     SHOW_INVENTORY("^show inventory$"),
-    BUY_BOOSTER("^buy (?<booster>\\w+) (?<count>\\d+)$"),
+    BUY_BOOSTER("^buy (?<booster>\\w+) (?<count>[-]?\\d+)$"),
 
     BACK("^back$"),
     SHOW_CURRENT_MENU("^show current menu$"),

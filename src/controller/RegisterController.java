@@ -88,8 +88,8 @@ public class RegisterController {
         StringBuilder output = new StringBuilder();
         output.append(allUsers.size());
         output.append(" user have registered!");
-        for (int i = 1; i <= allUsers.size(); i++) {
-            output.append('\n').append(i);
+        for (int i = 0; i < allUsers.size(); i++) {
+            output.append('\n').append(i+1);
             output.append(" - ");
             output.append(allUsers.get(i).getNickname());
         }

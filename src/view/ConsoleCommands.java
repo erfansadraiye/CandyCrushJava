@@ -36,7 +36,8 @@ public enum ConsoleCommands {
 
     BACK("^back$"),
     SHOW_CURRENT_MENU("^show current menu$"),
-    HELP("^help$");
+    EXIT("^exit$");
+
     public String label;
 
     ConsoleCommands(String string) {

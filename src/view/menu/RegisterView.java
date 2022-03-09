@@ -16,10 +16,16 @@ public class RegisterView extends ViewMenu {
             createNewUser(matcher);
         } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.SHOW_CURRENT_MENU, input)) != null) {
             showCurrentMenu();
+        } else if ((matcher = ConsoleCommands.getMatcher(ConsoleCommands.EXIT, input)) != null) {
+            exit();
         } else {
             System.out.println("invalid command");
         }
 
+    }
+
+    private void exit() {
+        System.exit(1);
     }
 
     private void createNewUser(Matcher matcher) {

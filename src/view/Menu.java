@@ -30,8 +30,6 @@ public enum Menu {
                 return "Main Menu";
             case GAME_MENU:
                 return "Game Menu";
-            case SCOREBOARD:
-                return "Scoreboard";
             case PROFILE_VIEW:
                 return "Profile Menu";
             case SHOP:

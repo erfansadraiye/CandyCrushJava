@@ -36,8 +36,8 @@ public class ProfileView extends ViewMenu {
     }
 
     private void changePassword(Matcher matcher) {
-        String oldPassword = matcher.group("old_password");
-        String newPassword = matcher.group("new_password");
+        String oldPassword = matcher.group("oldpassword");
+        String newPassword = matcher.group("newpassword");
         try {
             RegisterController.getInstance().changePassword(oldPassword,newPassword);
             System.out.println("password changed!");

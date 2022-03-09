@@ -19,7 +19,7 @@ public enum ConsoleCommands {
     SWIPE("^swipe (?<x>\\d+) (?<y>\\d+) (?<direction>[RLDU])$"),
     ACTIVE_LOLLIPOP_HAMMER("^active lollipop hammer (?<x>\\d+) (?<y>\\d+)$"),
     ACTIVE_COLOUR_BOMB_BRUSH("^active colour bomb brush (?<x>\\d+) (?<y>\\d+)$"),
-    ACTIVE_FREE_SWITCH("^active free switch (?<x>\\d+) (?<y>\\d+) (?<direction>[vh])$"),
+    ACTIVE_FREE_SWITCH("^active free switch (?<x>\\d+) (?<y>\\d+) (?<direction>[LRDU])$"),
     ACTIVE_EXTRA_MOVES("^active extra moves$"),
     ACTIVE_STRIPED_BRUSH("^active striped brush (?<x>\\d+) (?<y>\\d+) (?<direction>[vh])$"),
     ACTIVE_WRAPPED_BRUSH("^active wrapped brush (?<x>\\d+) (?<y>\\d+)$"),

@@ -29,9 +29,7 @@ public class Cell {
     }
 
     public CellCondition getExplodeCondition() {
-        return (Cell cell) -> {
-            return this.candy.getExplodeCondition(getCoordinate()).canExplodes(cell);
-        };
+        return (Cell cell) -> this.candy.getExplodeCondition(getCoordinate()).canExplodes(cell);
     }
 
     public void setCandy(Candy candy) {

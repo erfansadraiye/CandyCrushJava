@@ -39,7 +39,7 @@ public class GameController {
         Candy secondCandy = (Candy) second.getCandy().clone();
         game.getBoard().setCandy(first.getCoordinate(), secondCandy);
         game.getBoard().setCandy(second.getCoordinate(), firstCandy);
-        if (!forceToSwipe && !eatCandies(combination.getCellCondition(game), 1)) {
+        if (!eatCandies(combination.getCellCondition(game), 1) && !forceToSwipe) {
             game.getBoard().setCandy(first.getCoordinate(), firstCandy);
             game.getBoard().setCandy(second.getCoordinate(), secondCandy);
             throw new Exception("invalid move");
@@ -190,6 +190,7 @@ public class GameController {
         User player = RegisterController.getInstance().getOnlineUser();
         player.setHighScore(game.getScore());
         player.increaseMoney(game.getScore() / 10);
+        HandleRequestType.currentMenu = Menu.MAIN_MENU;
         throw new Exception("game has ended. your score is " + game.getScore());
     }
 }

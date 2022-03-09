@@ -44,6 +44,7 @@ public class Game {
     @Override
     public String toString() {
         return "Moves: " + countMoves + "\n" +
+                "Score: " + score + "\n" +
                 board.toString();
     }
 }

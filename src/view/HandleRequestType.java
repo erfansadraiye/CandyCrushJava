@@ -15,23 +15,6 @@ public class HandleRequestType {
     RegisterView registerView;
     String command = "";
 
-    public RegisterView getRegisterView() {
-        return registerView;
-    }
-
-    public ProfileView getProfileView() {
-        return profileView;
-    }
-
-    public ShopView getShopView() {
-        return shopView;
-    }
-
-    public MainView getMainView() {
-        return mainView;
-    }
-
-
     public void start() throws Exception {
         registerView = new RegisterView();
         profileView = new ProfileView();
@@ -43,7 +26,6 @@ public class HandleRequestType {
                 command = scanner.nextLine();
             } else
                 break;
-            command = command.trim();
             if (currentMenu == Menu.REGISTER_MENU) {
                 registerView.run(command);
             } else if (currentMenu == Menu.MAIN_MENU) {
@@ -57,6 +39,7 @@ public class HandleRequestType {
             } else {
                 throw new RuntimeException("core adaption failed!");
             }
+
         }
     }
 

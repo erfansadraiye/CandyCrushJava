@@ -6,9 +6,7 @@ public enum Menu {
     MAIN_MENU,
     PROFILE_VIEW,
     SHOP,
-    GAME_MENU,
-    SCOREBOARD;
-
+    GAME_MENU;
     public static Menu getMenu(String menu) {
         switch (menu) {
             case "Profile":

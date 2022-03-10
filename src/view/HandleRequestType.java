@@ -27,6 +27,8 @@ public class HandleRequestType {
             } else
                 break;
             if (currentMenu == Menu.REGISTER_MENU) {
+                if (command.equals("exit"))
+                    break;
                 registerView.run(command);
             } else if (currentMenu == Menu.MAIN_MENU) {
                 mainView.run(command);

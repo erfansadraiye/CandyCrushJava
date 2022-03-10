@@ -90,7 +90,7 @@ public class User {
     }
 
     public int getCountWrappedBrush() {
-        return countStripedBrush;
+        return countWrappedBrush;
     }
 
     public void increaseCountWrappedBrush(int count) {
@@ -100,7 +100,6 @@ public class User {
     public void decreaseCountWrappedBrush() {
         this.countWrappedBrush--;
     }
-
 
     public void decreaseMoney(long cost) {
         wallet -= cost;

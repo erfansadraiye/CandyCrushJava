@@ -164,12 +164,14 @@ public class GameController {
         if (RegisterController.getInstance().getOnlineUser().getCountFreeSwitch() == 0)
             throw new Exception("not enough free switch");
         swipeCell(coordinate, direction, true);
+        RegisterController.getInstance().getOnlineUser().decreaseCountFreeSwitch();
     }
 
     public void activateExtraMove() throws Exception {
         if (RegisterController.getInstance().getOnlineUser().getCountExtraMoves() == 0)
             throw new Exception("not enough extra moves");
         game.increaseCountMoves(5);
+        RegisterController.getInstance().getOnlineUser().decreaseCountExtraMoves();
     }
 
     public static GameController getInstance() {

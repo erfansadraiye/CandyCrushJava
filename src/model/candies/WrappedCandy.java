@@ -12,7 +12,7 @@ public class WrappedCandy extends SpecialCandy {
 
     @Override
     public CellCondition getExplodeCondition(Coordinate coordinate) {
-        return (Cell cell) -> cell.getCoordinate().getMaxDistance(coordinate) < 3;
+        return (Cell cell) -> cell.getCoordinate().getMaxDistance(coordinate) <= 1;
     }
 
     @Override

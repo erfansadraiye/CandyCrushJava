@@ -15,8 +15,8 @@ public class Function {
     public int nextInt() {
         cnt++;
         if (cnt % 2 == 0)
-            return randomobj.nextInt(3) - 1;
+            return randomobj.nextInt(3);
         else
-            return randomobj.nextInt(3) + 2;
+            return randomobj.nextInt(3) + 3;
     }
 }

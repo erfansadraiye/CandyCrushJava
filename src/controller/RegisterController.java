@@ -87,7 +87,7 @@ public class RegisterController {
     public String listOfUsers() {
         StringBuilder output = new StringBuilder();
         output.append(allUsers.size());
-        output.append(" user have registered!");
+        output.append(" users have registered!");
         for (int i = 0; i < allUsers.size(); i++) {
             output.append('\n').append(i+1);
             output.append(" - ");

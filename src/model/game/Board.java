@@ -25,8 +25,8 @@ public class Board {
         table[coordinate.getX()][coordinate.getY()].setCandy(candy);
     }
 
-    public Cell[][] getTable() {
-        return table;
+    public Candy getCandy(Coordinate coordinate) {
+        return table[coordinate.getX()][coordinate.getY()].getCandy();
     }
 
     public Cell getCell(Coordinate coordinate) {

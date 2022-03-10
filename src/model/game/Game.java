@@ -4,7 +4,6 @@ public class Game {
     private int countMoves;
     private int score;
     private final Board board;
-    // TODO: game need a user
 
     public Game(int seed, int moves) {
         countMoves = moves;

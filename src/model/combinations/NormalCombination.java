@@ -31,7 +31,6 @@ public class NormalCombination implements Combination {
                             isCorrect = false;
                     }
                     if (isCorrect) {
-
                         return true;
                     }
                 }

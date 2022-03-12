@@ -23,13 +23,13 @@ public class HandleRequestType {
         shopView = new ShopView();
         gameView = new GameView();
         mainView = new MainView();
-        FileWriter file = new FileWriter("input9.txt");
+//        FileWriter file = new FileWriter("input9.txt");
         while (currentMenu != Menu.EXIT) {
             if (scanner.hasNext()) {
                 command = scanner.nextLine();
             } else
                 break;
-            file.write(command+"\n");
+//            file.write(command+"\n");
             if (command.equals("exit"))
                 break;
             if (currentMenu == Menu.REGISTER_MENU) {
@@ -47,7 +47,7 @@ public class HandleRequestType {
             }
 
         }
-        file.close();
+//        file.close();
     }
 
 }

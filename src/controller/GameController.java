@@ -55,9 +55,10 @@ public class GameController {
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 if (condition.canExplodes(game.getCellByCoordinate(new Coordinate(i, j)))) {
-                    System.out.println("Destroyed in first place : " + i + " . " + j);
+//                    System.out.println("Destroyed in first place : " + i + " . " + j);
                     queue.add(new Coordinate(i, j));
                     mark[i][j] = true;
+//                    System.out.println(i + " " + j + " destroyed!");
                 }
 
         if (queue.isEmpty())
@@ -69,13 +70,14 @@ public class GameController {
                 for (int j = 0; j < size; j++)
                     if (!mark[i][j] && cellCondition.canExplodes(game.getCellByCoordinate(new Coordinate(i, j)))) {
                         queue.add(new Coordinate(i, j));
+//                        System.out.println(i + " " + j + " destroyed!");
                         mark[i][j] = true;
                     }
         }
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 if (mark[i][j]) {
-                    System.out.println(i + " , " + j + " has destroyed in " + chainCount);
+//                    System.out.println(i + " , " + j + " has destroyed in " + chainCount);
                     game.increaseScore(chainCount * 60);
                     game.getBoard().setCandy(new Coordinate(i, j), null);
                 }

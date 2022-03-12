@@ -78,6 +78,7 @@ public class RegisterController {
         if (!newPassword.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+-=|]).{8,32}$"))
             throw new Exception("password is weak!");
         onlineUser.setPassword(newPassword);
+        userPass.put(onlineUser.getUsername(), newPassword);
     }
 
     public User getOnlineUser() {

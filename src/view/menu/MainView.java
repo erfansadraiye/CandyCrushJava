@@ -61,7 +61,7 @@ public class MainView extends ViewMenu {
 
     private void logout() {
         RegisterController.getInstance().logout();
-        System.out.println("User logged out!");
+        System.out.println("user logged out!");
     }
 
 }

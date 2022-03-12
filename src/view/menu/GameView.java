@@ -3,10 +3,8 @@ package view.menu;
 import controller.GameController;
 import controller.RegisterController;
 import model.User;
-import model.boosters.BoosterType;
 import model.game.Coordinate;
 import model.game.Direction;
-import model.game.Game;
 import view.ConsoleCommands;
 
 import java.util.regex.Matcher;

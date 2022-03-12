@@ -75,4 +75,3 @@ active wrapped brush 3 3
 active wrapped brush 4 4
 swipe 3 5 U
 show board
-exit

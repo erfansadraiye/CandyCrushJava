@@ -27,13 +27,14 @@ public class HandleRequestType {
         while (currentMenu != Menu.EXIT) {
             if (scanner.hasNext()) {
                 command = scanner.nextLine();
+
             } else
                 break;
 //            file.write(command+"\n");
-            if (command.equals("exit"))
-                break;
             if (currentMenu == Menu.REGISTER_MENU) {
                 registerView.run(command);
+                if (command.equals("exit"))
+                    break;
             } else if (currentMenu == Menu.MAIN_MENU) {
                 mainView.run(command);
             } else if (currentMenu == Menu.PROFILE_VIEW) {

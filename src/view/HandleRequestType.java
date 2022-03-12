@@ -32,9 +32,9 @@ public class HandleRequestType {
                 break;
 //            file.write(command+"\n");
             if (currentMenu == Menu.REGISTER_MENU) {
-                registerView.run(command);
                 if (command.equals("exit"))
                     break;
+                registerView.run(command);
             } else if (currentMenu == Menu.MAIN_MENU) {
                 mainView.run(command);
             } else if (currentMenu == Menu.PROFILE_VIEW) {

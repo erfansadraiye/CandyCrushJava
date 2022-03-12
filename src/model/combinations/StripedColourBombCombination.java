@@ -33,7 +33,7 @@ public class StripedColourBombCombination implements Combination {
                 else
                     candy = game.getCellByCoordinate(new Coordinate(cell.getXCoordinate(), i)).getCandy();
 
-                if (candy instanceof StripedCandy && candy.getColor().equals(cell.getCandy().getColor()))
+                if (candy.getColor().equals(cell.getCandy().getColor()))
                     return true;
             }
             return false;

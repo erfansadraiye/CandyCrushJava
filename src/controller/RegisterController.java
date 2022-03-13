@@ -12,7 +12,7 @@ public class RegisterController {
     private HashMap<String, String> userPass;
     private ArrayList<User> allUsers;
     private User onlineUser;
-
+    private final String REGEX_PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+\\-=|]).{8,32}$";
     private RegisterController() {
         userPass = new HashMap<>();
         allUsers = new ArrayList<>();
@@ -47,7 +47,7 @@ public class RegisterController {
             throw new Exception("username's format is invalid!");
         if (!nickname.matches("[a-zA-Z ]+"))
             throw new Exception("nickname's format is invalid!");
-        if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+-=|]).{8,32}$"))
+        if (!password.matches(REGEX_PASSWORD))
             throw new Exception("password is weak!");
         if (userPass.containsKey(username))
             throw new Exception("username already exists!");
@@ -75,7 +75,7 @@ public class RegisterController {
     public void changePassword(String oldPassword, String newPassword) throws Exception {
         if (!oldPassword.equals(onlineUser.getPassword()))
             throw new Exception("password is incorrect!");
-        if (!newPassword.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}\\[\\]:;<>,?/~_+-=|]).{8,32}$"))
+        if (!newPassword.matches(REGEX_PASSWORD))
             throw new Exception("password is weak!");
         onlineUser.setPassword(newPassword);
         userPass.put(onlineUser.getUsername(), newPassword);

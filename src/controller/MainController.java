@@ -28,7 +28,7 @@ public class MainController {
         HandleRequestType.currentMenu = menu;
     }
     public ArrayList<User> getSortedScoreBoard() {
-        ArrayList<User> players = RegisterController.getInstance().getAllUsers();
+        ArrayList<User> players = (ArrayList<User>) RegisterController.getInstance().getAllUsers().clone();
         players.sort(new SortByScore());
         return players;
     }
